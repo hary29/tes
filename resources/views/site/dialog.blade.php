@@ -1,0 +1,1 @@
+<img src="{{ asset('public/img/icon/payment.jpg')}}" class="w-100" alt="payment">

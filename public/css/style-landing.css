@@ -1,0 +1,123 @@
+/*-----------------------------------------------------------------------------------
+    Template Name: Patungan Sedekah Template
+    Description: 
+    Author: anonim
+    Author URI: http://timpatungansedekah.com/
+	Version: 1.0
+	Created : 31/12/2020
+
+----------------------------------------------------------------------------------- */
+body{
+    padding-bottom: 160px;
+    background-color: white;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.top-menu {
+    background-color:  #080e1b !important;
+
+    /* opacity: 0.1; */
+}
+
+.container-fluid {
+    width: 100%;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.navbar-nav .nav-item:hover {
+    border-top: 4px solid goldenrod !important;
+    border-bottom: 4px solid goldenrod !important;
+    padding: 6px 0; 
+}
+
+
+.navbar-nav > li > a {
+    color: goldenrod !important;
+}
+.navbar-nav .active {
+    color: darkgoldenrod !important;
+    font-weight: bold;
+}
+
+.rounded-pill {
+    border-radius: 1rem
+  }
+
+
+.transparent-input{
+    background-color:rgba(0, 0, 0, 0) !important;
+    border:none !important;
+    /* border: 1px solid goldenrod; */
+ }
+
+ .btm-row-index {
+    background-color:  #080e1b !important;
+    color: white;
+ }
+
+.transbox {
+    /* margin: 30px; */
+    background-color: goldenrod !important;
+  }
+
+footer {
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: goldenrod;
+    text-align: center;
+}
+
+.social:hover {
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+.social {
+    transform: scale(0.8);
+    /* Browser Variations: */
+    
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+#social-fb:hover {
+    color: #3B5998;
+}
+#social-tw:hover {
+    color: #4099FF;
+}
+#social-gp:hover {
+    color: #d34836;
+}
+#social-em:hover {
+    color: #d34836;
+}
+
+#social-ig:hover {
+    color: transparent;
+    background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -o-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}

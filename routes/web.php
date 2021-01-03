@@ -23,3 +23,4 @@ Route::get('/gallery', [SiteController::class,'gallery']);
 Route::get('/donation', [SiteController::class,'donation']);
 Route::get('/about', [SiteController::class,'about']);
 Route::get('/contact', [SiteController::class,'contact']);
+Route::get('/dialog', [SiteController::class,'dialog']);

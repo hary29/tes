@@ -6,12 +6,14 @@
 
         <title>@yield('tittle')</title>
 
-        <link rel="icon" href="{{ url('/resources/img/logo1.png') }}" type="image/x-icon"/>
+        <link rel="icon" href="{{ asset('/resources/img/logo1.png') }}" type="image/x-icon"/>
 
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <script src="{{ asset('resources/js/jquery-3.5.1.min.js') }}"></script>
+        
+        <script src="{{ asset('resources/js/custom.js') }}"></script>
 
         <link href="{{ asset('resources/css/style-landing.css') }}" rel="stylesheet">
 
@@ -20,9 +22,15 @@
     </head>
 
     <body>
+        <script type="text/javascript">
+            var APP_URL = {!! json_encode(url('/')) !!}
+        </script>
+
         <!-- <div class="container"> -->
             @include('layout/menu')
+            @include('layout/modal')
             @yield('container')
+            
         <!-- </div> -->
         
         <!-- Optional JavaScript -->

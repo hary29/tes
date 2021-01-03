@@ -61,6 +61,18 @@ class SiteController extends Controller
         return view('site/contact');
     }
 
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dialog()
+    {
+        //
+        return view('site/dialog');
+    }
+    
+
     /**
      * Store a newly created resource in storage.
      *

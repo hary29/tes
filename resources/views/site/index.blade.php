@@ -11,7 +11,7 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, explicabo consectetur debitis facilis natus rem nemo quidem ipsam cum. Similique odio non velit minus a, eum reiciendis dolorem vitae autem.
       </div>
       <div class="col-lg-6 col-md-6 text-center my-5">
-        <img  class="" src="{{ url('/resources/img/bannerPs.png') }}" alt="thinking"> 
+        <img  class="" src="{{ asset('/resources/img/bannerPs.png') }}" alt="thinking"> 
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="javascript:void(0)" class="btn btn-primary modalMd" value="" title="Show Data" target="dialog" >Go somewhere</a>
         </div>
       </div>
     </div>
@@ -98,6 +98,7 @@
   @endsection
 
   <script>
+    
   // alert('tess')
   //     console.log('tess');
   </script>
