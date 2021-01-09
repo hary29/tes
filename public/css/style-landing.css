@@ -3,8 +3,8 @@
     Description: 
     Author: anonim
     Author URI: http://timpatungansedekah.com/
-	Version: 1.0
-	Created : 31/12/2020
+    Version: 1.0
+    Created : 31/12/2020
 
 ----------------------------------------------------------------------------------- */
 body{
@@ -39,6 +39,10 @@ margin-left: auto;
     padding: 6px 0; 
 }
 
+.card:hover{
+    transform: scale(1.05);
+    border: 3px solid goldenrod;
+}
 
 .navbar-nav > li > a {
     color: goldenrod !important;

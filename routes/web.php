@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Livewire\About;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,10 @@ Route::get('/donation', [SiteController::class,'donation']);
 Route::get('/about', [SiteController::class,'about']);
 Route::get('/contact', [SiteController::class,'contact']);
 Route::get('/dialog', [SiteController::class,'dialog']);
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/about-manage', About::class)->name('about-manage'); //Tambahkan routing ini
+});

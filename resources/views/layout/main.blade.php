@@ -6,16 +6,16 @@
 
         <title>@yield('tittle')</title>
 
-        <link rel="icon" href="{{ asset('/resources/img/logo1.png') }}" type="image/x-icon"/>
+        <link rel="icon" href="{{ asset('/img/logo1.png') }}" type="image/x-icon"/>
 
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-        <script src="{{ asset('resources/js/jquery-3.5.1.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery-3.5.1.min.js') }}"></script>
         
-        <script src="{{ asset('resources/js/custom.js') }}"></script>
+        <script src="{{ asset('/js/custom.js') }}"></script>
 
-        <link href="{{ asset('resources/css/style-landing.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/style-landing.css') }}" rel="stylesheet">
 
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 

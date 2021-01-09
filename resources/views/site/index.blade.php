@@ -11,7 +11,7 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, explicabo consectetur debitis facilis natus rem nemo quidem ipsam cum. Similique odio non velit minus a, eum reiciendis dolorem vitae autem.
       </div>
       <div class="col-lg-6 col-md-6 text-center my-5">
-        <img  class="" src="{{ asset('/resources/img/bannerPs.png') }}" alt="thinking"> 
+        <img  class="" src="{{ asset('img/bannerPs.png') }}" alt="thinking"> 
       </div>
     </div>
   </div>

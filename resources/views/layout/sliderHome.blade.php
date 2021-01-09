@@ -6,21 +6,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="w-100" src="{{ asset('public/img/slider/craig-strahorn--UmCb7gAAUI-unsplash.jpg') }}" alt="First slide" style="">
+      <img class="w-100" src="{{ asset('img/slider/craig-strahorn--UmCb7gAAUI-unsplash.jpg') }}" alt="First slide" style="">
         <div class="carousel-caption d-none d-md-block">
             <h5>abc</h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aperiam nisi odit nemo doloremque maiores modi. Error sapiente in commodi eveniet, recusandae sint magni quidem odit ad, illo nisi dolor.</p>
         </div>
     </div>
     <div class="carousel-item">
-      <img class="w-100" src="{{ asset('public/img/slider/jonathan-bean-Ejpx_sdKEKo-unsplash.jpg') }}" alt="Second slide" style="">
+      <img class="w-100" src="{{ asset('img/slider/jonathan-bean-Ejpx_sdKEKo-unsplash.jpg') }}" alt="Second slide" style="">
       <div class="carousel-caption d-none d-md-block">
             <h5>cde</h5>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, illo! Doloremque, tempore reiciendis alias maxime qui maiores iusto officiis quae! Dolor, quae ipsa sequi corporis repellat iure quod omnis neque.</p>
         </div>
     </div>
     <div class="carousel-item">
-      <img class="w-100" src="{{ asset('public/img/slider/wes-hicks-6rNitHsIU3c-unsplash.jpg') }}" alt="Third slide" style="">
+      <img class="w-100" src="{{ asset('img/slider/wes-hicks-6rNitHsIU3c-unsplash.jpg') }}" alt="Third slide" style="">
       <div class="carousel-caption d-none d-md-block">
             <h5>efg</h5>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea similique sequi dolores, provident esse nobis dolorem beatae cumque sapiente eligendi natus molestias voluptates libero maxime architecto! Repellendus quas distinctio officiis?</p>
