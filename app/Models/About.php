@@ -49,4 +49,16 @@ class About extends Model
         }
     }
 
+    public function photo()
+    {
+        if ($this->path_url == null) {
+            return '/img/default-about.png';
+        }
+        elseif (file_exists( public_path() . '/uploads/images-upload-about/' . $this->path_url)) {
+            return '/uploads/images-upload-about/' . $this->path_url;
+        } else {
+            return '/img/default-about.png';
+        }     
+    }
+
 }

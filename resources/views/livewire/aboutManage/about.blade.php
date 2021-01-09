@@ -48,7 +48,9 @@
                             <td class="border px-4 py-2">{{ $index+1 }}</td>
                             <td class="border px-4 py-2">{!! $row->publish_label !!}</td>
 
-                            <td class="border px-4 py-2"><img src="{{ asset('uploads/images-upload-about/'.$row->path_url) }}" class="object-contain h-48 w-full"/></td>
+                            <td class="border px-4 py-2">
+                                <img src="{{$row->photo()}}" class="object-contain h-48 w-full" alt="">
+                            </td>
                             <td class="border px-4 py-2">{{ $row->title }}</td>
                             <td class="border px-4 py-2">{!!  $row->short_content !!}</td>
                             <td class="border px-4 py-2">{!! $row->description !!}</td>
