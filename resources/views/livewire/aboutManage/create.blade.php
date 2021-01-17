@@ -39,6 +39,7 @@
                             @error('description') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div> -->
                         <div class="mt-2 bg-white" wire:ignore>
+                          <label for="short_content" class="block text-gray-700 text-sm font-bold mb-2">Short Content:</label>
                           <div
                                x-data
                                x-ref="quillEditor"
@@ -78,6 +79,7 @@
                           </div>
                         </div>
                         <div class="mt-2 bg-white" wire:ignore>
+                          <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
                           <div
                                x-data
                                x-ref="quillEditor"
@@ -116,6 +118,15 @@
                             {!! $description !!}
                           </div>
                         </div>
+                        <div class="mb-4 my-1">
+                            <label for="formPublish" class="block text-gray-700 text-sm font-bold mb-2">Publish</label>
+                            <select class="form-control rounded-md focus:shadow-outline-blue" wire:model="publish" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="">Pilih</option>
+                                <option value="1">Publish</option>
+                                <option value="2">UnPublish</option>
+                            </select>
+                            @error('publish') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
                         <!-- <div class="mb-4">
                             <label for="formStatus" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
                             <select class="form-control" wire:model="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -140,6 +151,7 @@
                         Cancel
                         </button>
                     </span>
+                  </div>
                 </form>
             </div>
         </div>

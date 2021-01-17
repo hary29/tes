@@ -5,14 +5,17 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\About as AboutModel;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class About extends Component
 {
-    public $publish, $path_url, $title, $short_content, $description, $id_about;
+    use WithFileUploads;
+    use WithPagination;
+    public $publish, $path_url, $title, $short_content, $description, $id_about, $created_id, $modified_id, $publish_label, $created, $modified, $created_date, $modified_date, $createBy, $modifiedBy;
     //public $about;
     public $isModal = 0;
+    public $isDetail = 0;
 
-    use WithFileUploads;
 
     public $photo;
 
@@ -20,6 +23,7 @@ class About extends Component
   	//FUNGSI INI UNTUK ME-LOAD VIEW YANG AKAN MENJADI TAMPILAN HALAMAN MEMBER
     public function render()
     {
+    	//dd(request()->user()->currentTeam->id);
         //$this->about = AboutModel::where('publish', 1)->orderBy('created_date', 'DESC')->paginate(2);
         //MEMBUAT QUERY UNTUK MENGAMBIL DATA
         return view('livewire.aboutManage.about', ['about' => AboutModel::orderBy('created_date', 'DESC')->paginate(2)]); //LOAD VIEW MEMBERS.BLADE.PHP YG ADA DI DALAM FOLDER /RESOURSCES/VIEWS/LIVEWIRE
@@ -30,6 +34,7 @@ class About extends Component
     {
         //KEMUDIAN DI DALAMNYA KITA MENJALANKAN FUNGSI UNTUK MENGOSONGKAN FIELD
         $this->resetFields();
+        $this->created_id = request()->user()->id;
         //DAN MEMBUKA MODAL
         $this->openModal();
     }
@@ -73,7 +78,8 @@ class About extends Component
             // 'phone_number' => 'required|numeric',
             // 'status' => 'required'
         ]);
-        
+
+        /* Store $imageName name in DATABASE from HERE */
         if ($this->photo !== null && $this->photo !== '') {
 
         	$this->validate([
@@ -87,17 +93,18 @@ class About extends Component
 	        $this->path_url = $imageName;
 
 		}
-  
-        /* Store $imageName name in DATABASE from HERE */
 
         //QUERY UNTUK MENYIMPAN / MEMPERBAHARUI DATA MENGGUNAKAN UPDATEORCREATE
         //DIMANA ID MENJADI UNIQUE ID, JIKA IDNYA TERSEDIA, MAKA UPDATE DATANYA
         //JIKA TIDAK, MAKA TAMBAHKAN DATA BARU
         AboutModel::updateOrCreate(['id_about' => $this->id_about], [
             'path_url' => $this->path_url,
+            'publish' => $this->publish,
             'title' => $this->title,
             'short_content' => $this->short_content,
             'description' => $this->description,
+            'created_id' => $this->created_id,
+            'modified_id' => $this->modified_id,
         ]);
 
         //BUAT FLASH SESSION UNTUK MENAMPILKAN ALERT NOTIFIKASI
@@ -118,6 +125,8 @@ class About extends Component
         $this->title = $about->title;
         $this->short_content = $about->short_content;
         $this->description = $about->description;
+        $this->created_id = $about->created_id;
+        $this->modified_id = request()->user()->id;
 
         $this->openModal(); //LALU BUKA MODAL
     }
@@ -129,6 +138,7 @@ class About extends Component
          //BUAT QUERY UNTUK MENGAMBIL DATA BERDASARKAN ID
         //LALU HAPUS DATA
         $about->publish = 2;
+        $about->modified_id = request()->user()->id;
         $about->save();
         $changes = $about->getChanges();
         if (empty($changes)) {
@@ -137,6 +147,62 @@ class About extends Component
 	        session()->flash('success-message', $about->title . ' berhasil dihapus'); //DAN BUAT FLASH MESSAGE UNTUK NOTIFIKASI
         }
 
+    }
+
+    public function switchPublish($id)
+    {
+        $about = AboutModel::find($id);
+        $aboutPublish = 0;
+        if ($about->publish == 1) {
+            $about->publish = 2;
+        }elseif ($about->publish == 2) {
+            $about->publish = 1;
+        }
+        $about->modified_id = request()->user()->id;
+
+        $about->save();
+        $changes = $about->getChanges();
+        if (empty($changes)) {
+            session()->flash('error-message', 'tidak ada perubahan data pada ' .$about->title);
+        }else{
+            session()->flash('success-message', $about->title . ' berhasil diubah'); //DAN BUAT FLASH MESSAGE UNTUK NOTIFIKASI
+        }
+
+    }
+
+    public function detail($id){
+        $detail = AboutModel::find($id);
+
+        $this->id_about = $id;
+        $this->publish = $detail->publish;
+        $this->path_url = $detail->path_url;
+        $this->title = $detail->title;
+        $this->short_content = $detail->short_content;
+        $this->description = $detail->description;
+        $this->created_id = $detail->created_id;
+        $this->modified_id = request()->user()->id;
+        $this->photo = $detail->getPhoto();
+        $this->publish_label = $detail->getPublishLabelAttribute();
+        if ($detail->created_id) {
+            $this->createBy = $detail->userCreated->name;
+        }
+        if ($detail->modified_id) {
+            $this->modifiedBy = $detail->userModified->name;
+        }
+        if ($detail->created_date) {
+            $this->created_date = date('d-m-Y h:i:s', strtotime($detail->created_date));
+        }
+        if ($detail->modified_date) {
+            $this->modified_date = date('d-m-Y h:i:s', strtotime($detail->modified_date));
+        }
+        $this->isDetail = true;
+
+        //$this->openModal();
+    }
+
+    public function closeModalDetail()
+    {
+        $this->isDetail = false;
     }
 }
 

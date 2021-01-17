@@ -16,16 +16,97 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('about-manage') }}" :active="request()->routeIs('about-manage')">
-                        {{ __('About') }}
-                    </x-jet-nav-link>
-                </div>
+
+                @if(Auth::user()->is_admin == 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('user-manage') }}" :active="request()->routeIs('user-manage')">
+                            {{ __('User Mangement') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
+
+                @if(Auth::user()->is_admin)
+                    <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('about-manage') }}" :active="request()->routeIs('about-manage')">
+                            {{ __('About') }}
+                        </x-jet-nav-link>
+                    </div> -->
+               
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <div class="pt-5 relative">
+                            <x-jet-dropdown align="right" width="60">
+                                <x-slot name="trigger">
+                                    <span class="inline-flex rounded-md">
+                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                            {{ __('Content Manage') }}
+
+                                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <div class="w-60">
+                                       
+                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                            {{ __('Content Manage') }}
+                                        </div>
+
+                                        <!-- content management -->
+                                        <x-jet-dropdown-link href="{{ route('about-manage') }}" :active="request()->routeIs('about-manage')">
+                                            {{ __('About Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                        <x-jet-dropdown-link href="{{ route('page-info-manage') }}" :active="request()->routeIs('page-info-manage')">
+                                            {{ __('Page Info Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                         <x-jet-dropdown-link href="{{ route('payment-category-manage') }}" :active="request()->routeIs('payment-category-manage')">
+                                            {{ __('Payment Category Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                        <x-jet-dropdown-link href="{{ route('social-media-manage') }}" :active="request()->routeIs('social-media-manage')">
+                                            {{ __('Social Media Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                        <x-jet-dropdown-link href="{{ route('slider-manage') }}" :active="request()->routeIs('slider-manage')">
+                                            {{ __('Slider Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                        <x-jet-dropdown-link href="{{ route('video-content-manage') }}" :active="request()->routeIs('video-content-manage')">
+                                        {{ __('Video Content Manage') }}
+                                        </x-jet-dropdown-link>
+
+                                    </div>
+                                </x-slot>
+                            </x-jet-dropdown>
+                        </div>
+                    </div>
+
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('article-manage') }}" :active="request()->routeIs('article-manage')">
+                            {{ __('Article') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('gallery-manage') }}" :active="request()->routeIs('gallery-manage')">
+                            {{ __('Gallery') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('testimony-manage') }}" :active="request()->routeIs('testimony-manage')">
+                            {{ __('Testimony') }}
+                        </x-jet-nav-link>
+                    </div> 
+
+                @endif
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures() && Auth::user()->is_admin == 1)
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
                             <x-slot name="trigger">
@@ -147,12 +228,63 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
+        
+        @if (Auth::user()->is_admin == 1)
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('user-manage') }}" :active="request()->routeIs('user-manage')">
+                    {{ __('User Management') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @endif
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('about-manage') }}" :active="request()->routeIs('about-manage')">
-                {{ __('About') }}
-            </x-jet-responsive-nav-link>
-        </div>
+        @if (Auth::user()->is_admin)
+
+            <div class="pt-2 pb-3 space-y-1 border-gray-200">
+                <div class="block px-4 py-2 text-xs text-gray-400">
+                        {{ __('Content Manage') }}
+                    </div>
+
+                    <!-- drop down content -->
+                    <x-jet-responsive-nav-link href="{{ route('about-manage') }}" :active="request()->routeIs('about-manage')">
+                        {{ __('About Manage') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('payment-category-manage') }}" :active="request()->routeIs('payment-category-manage')">
+                        {{ __('Payment Category Manage') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('page-info-manage') }}" :active="request()->routeIs('page-info-manage')">
+                        {{ __('Page Info Manage') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('social-media-manage') }}" :active="request()->routeIs('social-media-manage')">
+                        {{ __('Social Media Manage') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('slider-manage') }}" :active="request()->routeIs('slider-manage')">
+                        {{ __('Slider Manage') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('video-content-manage') }}" :active="request()->routeIs('video-content-manage')">
+                        {{ __('Video Content Manage') }}
+                    </x-jet-responsive-nav-link>
+            </div>
+
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('article-manage') }}" :active="request()->routeIs('article-manage')">
+                    {{ __('Article') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('gallery-manage') }}" :active="request()->routeIs('gallery-manage')">
+                    {{ __('Gallery') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('testimony-manage') }}" :active="request()->routeIs('testimony-manage')">
+                    {{ __('Testimony') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @endif
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

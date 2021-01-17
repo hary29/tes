@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Livewire\About;
+use App\Http\Livewire\UserManage;
+use App\Http\Livewire\ArticleManage;
+use App\Http\Livewire\GalleryManage;
+use App\Http\Livewire\SliderManage;
+use App\Http\Livewire\SocialMediaManage;
+use App\Http\Livewire\TestimonyManage;
+use App\Http\Livewire\PageInfoManage;
+use App\Http\Livewire\PaymentCategoryManage;
+use App\Http\Livewire\VideoContentManage;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
@@ -33,7 +42,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/about-manage', About::class)->name('about-manage'); //Tambahkan routing ini
+   /* Route::get('/about-manage', About::class)->name('about-manage');*/ //Tambahkan routing ini
 });
 
 $enableViews = config('fortify.views', true);
@@ -47,6 +56,24 @@ if (Features::enabled(Features::registration())) {
     Route::post('/r3g', [RegisteredUserController::class, 'store'])
         ->middleware(['guest']);
 }
+
+/*user management*/
+Route::group(['middleware'=>'admins'],function(){
+	Route::get('/about-manage', About::class)->name('about-manage');
+    Route::get('/video-content-manage', VideoContentManage::class)->name('video-content-manage');
+    Route::get('/page-info-manage', PageInfoManage::class)->name('page-info-manage');
+    Route::get('/payment-category-manage', PaymentCategoryManage::class)->name('payment-category-manage');
+    Route::get('/slider-manage', SliderManage::class)->name('slider-manage');
+    Route::get('/social-media-manage', SocialMediaManage::class)->name('social-media-manage');
+    Route::get('/testimony-manage', TestimonyManage::class)->name('testimony-manage');
+    Route::get('/article-manage', ArticleManage::class)->name('article-manage');
+    Route::get('/gallery-manage', GalleryManage::class)->name('gallery-manage');
+});
+
+/*super only*/
+Route::group(['middleware'=>'super'],function(){
+    Route::get('/user-manage', UserManage::class)->name('user-manage');
+});
 
 //unable route register
 Route::any('/register', function()

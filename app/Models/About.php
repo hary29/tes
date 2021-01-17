@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 /**
  * @property int $id_about
@@ -49,7 +50,7 @@ class About extends Model
         }
     }
 
-    public function photo()
+    public function getPhoto()
     {
         if ($this->path_url == null) {
             return '/img/default-about.png';
@@ -61,4 +62,16 @@ class About extends Model
         }     
     }
 
+    /**
+     * Get the user that was create/modified about.
+     */
+    public function userCreated()
+    {
+        return $this->belongsTo(User::class, 'created_id', 'id');
+    }
+
+    public function userModified()
+    {
+        return $this->belongsTo(User::class, 'modified_id', 'id');
+    }
 }
