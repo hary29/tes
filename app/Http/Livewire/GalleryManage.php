@@ -14,10 +14,14 @@ class GalleryManage extends Component
 	public $id_gallery, $publish, $name, $url, $description, $event_time, $created_id, $modified_id, $publish_label, $created, $modified, $created_date, $modified_date, $createBy, $modifiedBy;
 	public $isModal = 0;
     public $isDetail = 0;
+    
+    public $searchNameTerm;
 
     public function render()
     {
-        return view('livewire.galleryManage.manage', ['content' => GalleryModel::orderBy('created_date', 'DESC')->paginate(2)]);
+    	$searchTerm = '%'.$this->searchNameTerm.'%';
+    	$content = GalleryModel::where('name','like', $searchTerm)->orderBy('created_date', 'DESC')->paginate(2);
+        return view('livewire.galleryManage.manage',['content' => $content]);
     }
 
     public function create()
