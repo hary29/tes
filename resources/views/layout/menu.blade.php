@@ -17,8 +17,11 @@
         <li class="nav-item {{ (request()->is('donation')) ? 'active' : '' }}">
           <a class="nav-link" href="{{ url('/donation') }}">Donation</a>
         </li>
-        <li class="nav-item {{ (request()->is('contact')) ? 'active' : '' }}">
+        <!-- <li class="nav-item {{ (request()->is('contact')) ? 'active' : '' }}">
           <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
+        </li> -->
+        <li class="nav-item {{ (request()->is('article')) ? 'active' : '' }}">
+          <a class="nav-link" href="{{ url('/article') }}">Article</a>
         </li>
         <li class="nav-item {{ (request()->is('about')) ? 'active' : '' }}">
           <a class="nav-link" href="{{ url('/about') }}">About Us</a>

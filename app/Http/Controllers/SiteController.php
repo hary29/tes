@@ -61,6 +61,19 @@ class SiteController extends Controller
         return view('site/contact');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function article()
+    {
+        //
+        return view('site/article-home');
+        // if detail
+        //return view('site/detail-article');
+    }
+
      /**
      * Show the form for creating a new resource.
      *

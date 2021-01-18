@@ -33,7 +33,7 @@
             @endif
             
             <!-- component -->
-            <div class="flex justify-end md:justify-end text-gray-600 mb-2">
+            <div class="flex justify-end text-gray-600 mb-2">
               <input type="search" name="serch" placeholder="Search by name" class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none border-green-500" wire:model="searchNameTerm">
             </div>
             <table class="table-auto w-full">
