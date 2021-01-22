@@ -32,7 +32,7 @@ const marker = new google.maps.Marker({
 </section>
 <section class="container mt-5 mb-3">
 	<div class="row">
-		<div class="col col-lg-4 bg-success">
+		<div class="col col-lg-4 bg-success shadow">
 	      
 	    </div>
 		<div class="col">

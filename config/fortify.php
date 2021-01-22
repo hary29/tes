@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'MburiL4w4ng',
 
     'domain' => null,
 

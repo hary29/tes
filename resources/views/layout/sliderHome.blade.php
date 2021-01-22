@@ -4,7 +4,7 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner">
+  <div class="carousel-inner" id="carouselHome">
     <div class="carousel-item active">
       <img class="w-100" src="{{ asset('img/slider/craig-strahorn--UmCb7gAAUI-unsplash.jpg') }}" alt="First slide" style="">
         <div class="carousel-caption d-none d-md-block">

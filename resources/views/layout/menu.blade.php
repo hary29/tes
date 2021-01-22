@@ -1,7 +1,7 @@
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark top-menu">
 <a class="navbar-brand" href="{{ url('/') }}">
-    <img src="{{ asset('img/logo1.png') }}" alt="">
+    <img src="{{ asset('img/ps-logo/ps32x90.png') }}" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" style="color:#fff"></span>

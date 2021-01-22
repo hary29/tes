@@ -35,11 +35,12 @@ Route::get('/gallery', [SiteController::class,'gallery']);
 Route::get('/donation', [SiteController::class,'donation']);
 Route::get('/about', [SiteController::class,'about']);
 Route::get('/article', [SiteController::class,'article']);
+
 //Route::get('/contact', [SiteController::class,'contact']);
 Route::get('/dialog', [SiteController::class,'dialog']);
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
-    Route::get('/dashboard', function() {
+    Route::get('/MburiL4w4ng', function() {
         return view('dashboard');
     })->name('dashboard');
 
