@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Article as ArticleModel;
+use App\Models\About as AboutModel;
+use App\Models\Testimony as TestimonyModel;
 
 use Illuminate\Http\Request;
 
@@ -13,8 +16,17 @@ class SiteController extends Controller
      */
     public function index()
     {
-        //
-        return view('site/index');
+        $dataAbout = AboutModel::where('publish', 1)->firstOrFail();
+        $dataArticle = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')
+        ->skip(1)->take(3)->get();
+        $dataArticleNew = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')
+        ->take(1)->firstOrFail();
+        return view('site/index', 
+        [
+            'dataAbout'=> $dataAbout,
+            'dataArticle'=> $dataArticle,
+            'dataArticleNew'=> $dataArticleNew,
+        ]);
     }
 
     /**
@@ -36,7 +48,11 @@ class SiteController extends Controller
     public function donation()
     {
         //
-        return view('site/donation');
+        $dataTestimony = TestimonyModel::where('publish', 1)->orderBy('created_date', 'DESC')
+        ->take(5)->get();
+        return view('site/donation', [
+            'dataTestimony' => $dataTestimony
+        ]);
     }
 
     /**
@@ -47,7 +63,8 @@ class SiteController extends Controller
     public function about()
     {
         //
-        return view('site/about');
+        $dataAbout = AboutModel::where('publish', 1)->firstOrFail();
+        return view('site/about', ['dataAbout' => $dataAbout]);
     }
 
     /**
@@ -69,7 +86,9 @@ class SiteController extends Controller
     public function article()
     {
         //
-        return view('site/article-home');
+        $data = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')->paginate(5);
+        
+        return view('site/article-home', ['data'=>$data]);
         // if detail
         //return view('site/detail-article');
     }

@@ -40,9 +40,9 @@
        
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <footer class="footer">
-            <p>Created By: Timpatungansedekah.com<br>
-            <a href="mailto:admin@timpatungansedekah.com">admin@timpatungansedekah.com</a></p>
+        <footer class="footer pt-3">
+            <p>Created By: patungansedekah.com<br>
+            <a href="mailto:admin@timpatungansedekah.com">admin@patungansedekah.com</a></p>
             <div class="text-center center-block">
                 <a href="https://www.facebook.com" target="_blank"><i id="social-fb" class="fa fa-facebook fa-3x social"></i></a>
 	            <a href="https://twitter.com" target="_blank"><i id="social-tw" class="fa fa-twitter fa-3x social"></i></a>

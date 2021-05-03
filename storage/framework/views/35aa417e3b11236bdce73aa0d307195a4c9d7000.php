@@ -1,0 +1,1 @@
+<img src="<?php echo e(asset('/img/icon/payment.jpg')); ?>" class="w-100" alt="payment"><?php /**PATH /var/www/html/php74/tes/resources/views/site/dialog.blade.php ENDPATH**/ ?>

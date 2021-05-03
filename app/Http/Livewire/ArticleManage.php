@@ -11,13 +11,35 @@ class ArticleManage extends Component
 {
 	use WithFileUploads;
     use WithPagination;
-	public $id_article, $publish, $photo, $path_photo, $title, $short_description, $description, $created_id, $modified_id, $publish_label, $created, $modified, $created_date, $modified_date, $createBy, $modifiedBy;
+	public $id_article, $publish, $photo, $path_photo, $title, $short_description, $description, $created_id, $modified_id, $publish_label, $created, $modified, $created_date, $modified_date, $createBy, $modifiedBy, $oldPublishdate, $publish_date;
+    public $searchTitle, $searchContent, $searchDescription;
 	public $isModal = 0;
     public $isDetail = 0;
+    public $pagination;
 
     public function render()
     {
-        return view('livewire.articleManage.article', ['article' => ArticleModel::orderBy('created_date', 'DESC')->paginate(2)]);
+        $this->pagination = 2; 
+        $article = ArticleModel::orderBy('created_date', 'DESC');
+
+        if ($this->searchTitle !== null) {
+            $searchTermTitle = '%'.$this->searchTitle.'%';
+            $article = $article->where('title','like', $searchTermTitle );
+        }
+
+        if ($this->searchContent !== null) {
+            $searchTermContent = '%'.$this->searchContent.'%';
+            $article = $article->where('short_description','like', $searchTermContent );
+        }
+
+        if ($this->searchDescription !== null) {
+            $searchTermDes = '%'.$this->searchDescription.'%';
+            $article = $article->where('description','like', $searchTermDes );
+        }
+
+        $article = $article->paginate($this->pagination);
+
+        return view('livewire.articleManage.article', ['article' =>$article]);
     }
 
     public function create()
@@ -43,6 +65,8 @@ class ArticleManage extends Component
         $this->title = '';
         $this->short_description = '';
         $this->description = '';
+        $this->publish_date = '';
+        $this->oldPublishdate = '';
         $this->photo = '';
     }
 
@@ -62,6 +86,7 @@ class ArticleManage extends Component
             'title' => 'required|string',
             'short_description' => 'required|string',
             'description' => 'required|string',
+            'publish_date' => 'date',
             //'photo' => 'image|max:1024', // 1MB Max
             // 'email' => 'required|email|unique:members,email,' . $this->member_id,
             // 'phone_number' => 'required|numeric',
@@ -69,19 +94,30 @@ class ArticleManage extends Component
         ]);
 
         /* Store $imageName name in DATABASE from HERE */
-        if ($this->photo !== null && $this->photo !== '') {
+        if(!$this->id_article){
+            if ($this->photo !== null && $this->photo !== '') {
 
-        	$this->validate([
-            	'photo' => 'image|max:1024', // 1MB Max
-        	]);
+                $this->validate([
+                    'photo' => 'image|max:1024', // 1MB Max
+                ]);
 
-	        $imageName = time().'.'.$this->photo->extension();  
-	     	//$this->photo->move(public_path('images-upload'), $imageName);
-	        $this->photo->storeAs('images-upload-article', $imageName, 'public_uploads');
+                $imageName = time().'.'.$this->photo->extension();  
+                //$this->photo->move(public_path('images-upload'), $imageName);
+                $this->photo->storeAs('images-upload-article', $imageName, 'public_uploads');
 
-	        $this->path_photo = $imageName;
+                $this->path_photo = $imageName;
 
-		}
+            }
+        }
+
+        if ($this->oldPublishdate != $this->publish_date) {
+            $this->publish_date = $this->publish_date;
+        }elseif ($this->publish_date == '') {
+           $this->publish_date = date("Y/m/d");
+        }
+        else{
+            $this->publish_date = $this->oldPublishdate;
+        }
 
         //QUERY UNTUK MENYIMPAN / MEMPERBAHARUI DATA MENGGUNAKAN UPDATEORCREATE
         //DIMANA ID MENJADI UNIQUE ID, JIKA IDNYA TERSEDIA, MAKA UPDATE DATANYA
@@ -89,6 +125,7 @@ class ArticleManage extends Component
         ArticleModel::updateOrCreate(['id_article' => $this->id_article], [
             'path_photo' => $this->path_photo,
             'publish' => $this->publish,
+            'publish_date' => $this->publish_date,
             'title' => $this->title,
             'short_description' => $this->short_description,
             'description' => $this->description,
@@ -109,6 +146,8 @@ class ArticleManage extends Component
         //LALU ASSIGN KE DALAM MASING-MASING PROPERTI DATANYA
         $this->id_article = $id;
         $this->publish = $article->publish;
+        $this->publish_date = $article->publish_date;
+        $this->oldPublishdate = $article->publish_date;
         $this->path_photo = $article->path_photo;
         $this->title = $article->title;
         $this->short_description = $article->short_description;
@@ -163,6 +202,7 @@ class ArticleManage extends Component
 
         $this->id_article = $id;
         $this->publish = $detail->publish;
+        $this->publish_date = $detail->publish_date;
         $this->path_photo = $detail->path_photo;
         $this->title = $detail->title;
         $this->short_description = $detail->short_description;

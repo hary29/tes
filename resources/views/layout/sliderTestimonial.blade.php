@@ -13,7 +13,7 @@
             <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"> 
           </div>
           <div class="card-subtitle">
-            <p> <small class="text-muted"> <i class="fas fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fas fa-quote-left fa-flip-horizontal"></i> </small> </p>
+            <p> <small class="text-muted"> <i class="fa fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fa fa-quote-left fa-flip-horizontal"></i> </small> </p>
           </div>
           <div class="card-body company">
             <i class="fab fa-ebay fa-2x"></i> 
@@ -29,7 +29,7 @@
             <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg">
           </div>
           <div class="card-subtitle">
-            <p> <small class="text-muted"> <i class="fas fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fas fa-quote-left fa-flip-horizontal"></i> </small> </p>
+            <p> <small class="text-muted"> <i class="fa fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fa fa-quote-left fa-flip-horizontal"></i> </small> </p>
           </div>
           <div class="card-body company">
             <i class="fab fa-ebay fa-2x"></i> 
@@ -44,7 +44,7 @@
           <div class="profile mb-4 mt-3"> 
             <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"> </div>
           <div class="card-subtitle">
-            <p> <small class="text-muted"> <i class="fas fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fas fa-quote-left fa-flip-horizontal"></i> </small> </p>
+            <p> <small class="text-muted"> <i class="fa fa-quote-left"></i> I expected anything less than perfect for the team of experts. They are the best team ever! <i class="fa fa-quote-left fa-flip-horizontal"></i> </small> </p>
           </div>
           <div class="card-body company">
             <i class="fab fa-ebay fa-2x"></i> 

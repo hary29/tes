@@ -1,7 +1,7 @@
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark top-menu">
 <a class="navbar-brand" href="{{ url('/') }}">
-    <img src="{{ asset('img/ps-logo/ps32x90.png') }}" alt="">
+    <img src="{{ asset('img/ps-logo/ps32x90.png') }}" class="" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" style="color:#fff"></span>
@@ -28,8 +28,8 @@
         </li>
     </ul>
    
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2 transparent-input rounded-pill" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" action="{{ url('/article') }}" method="GET">
+      <input class="form-control mr-sm-2 transparent-input rounded-pill" name="name" type="search" placeholder="Search" aria-label="Search">
     </form>
   </div>
 </nav>

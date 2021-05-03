@@ -97,7 +97,7 @@ class About extends Component
         //QUERY UNTUK MENYIMPAN / MEMPERBAHARUI DATA MENGGUNAKAN UPDATEORCREATE
         //DIMANA ID MENJADI UNIQUE ID, JIKA IDNYA TERSEDIA, MAKA UPDATE DATANYA
         //JIKA TIDAK, MAKA TAMBAHKAN DATA BARU
-        AboutModel::updateOrCreate(['id_about' => $this->id_about], [
+        $insert = AboutModel::updateOrCreate(['id_about' => $this->id_about], [
             'path_url' => $this->path_url,
             'publish' => $this->publish,
             'title' => $this->title,
@@ -106,6 +106,10 @@ class About extends Component
             'created_id' => $this->created_id,
             'modified_id' => $this->modified_id,
         ]);
+
+        if($this->publish == 1){
+            $this->updateAllUnpublish($insert->id_about);
+        }
 
         //BUAT FLASH SESSION UNTUK MENAMPILKAN ALERT NOTIFIKASI
         session()->flash('success-message', $this->id_about ? $this->title . ' Diperbaharui': $this->title . ' Ditambahkan');
@@ -157,6 +161,7 @@ class About extends Component
             $about->publish = 2;
         }elseif ($about->publish == 2) {
             $about->publish = 1;
+            $this->updateAllUnpublish($id);
         }
         $about->modified_id = request()->user()->id;
 
@@ -168,6 +173,14 @@ class About extends Component
             session()->flash('success-message', $about->title . ' berhasil diubah'); //DAN BUAT FLASH MESSAGE UNTUK NOTIFIKASI
         }
 
+    }
+
+    public function updateAllUnpublish ($id){
+        $about = AboutModel::where('id_about', '!=', $id)
+        ->where('publish',1)
+        ->update(['publish' => 2]);
+        
+        return true;
     }
 
     public function detail($id){

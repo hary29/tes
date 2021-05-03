@@ -33,8 +33,11 @@ const marker = new google.maps.Marker({
 <section class="container mt-5 mb-3">
 	<div class="row">
 		<div class="col col-lg-4 bg-success shadow">
-	      
-	    </div>
+      <?php if($dataAbout) { ?>
+	      <h1>{!! $dataAbout['title'] !!}</h1>
+        <p>{!! $dataAbout['description'] !!}</p>
+      <?php } ?>
+	  </div>
 		<div class="col">
 	      	<iframe
 		        id="JotFormIFrame-203209074848054"

@@ -10,6 +10,10 @@
 body{
     padding-bottom: 160px;
     background-color: white;
+    /*background-image: url('../img/ps-logo/big-logo.png');*/
+    background-position: right bottom; /*Positioning*/
+    background-repeat: no-repeat; /*Prevent showing multiple background images*/
+
 }
 
 .column {
@@ -23,6 +27,10 @@ body{
     background-color:  #080e1b !important;
 
     /* opacity: 0.1; */
+}
+
+.logo-front:hover{
+    transform: scale(1.50);
 }
 
 .container-fluid {

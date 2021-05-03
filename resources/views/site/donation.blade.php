@@ -58,15 +58,16 @@
         </div>
     </div>
 </section>
-
+<?php if (count($dataTestimony) > 0) { ?>
 <div class="container-fluid p-3 my-3">
   <div class="btm-row-index">
     <div class="text-center">
         <h2 class="transbox">Apa kata mereka</h2>
     </div>
     
-    @include('layout/sliderTestimonial')
+    @include('layout/sliderTestimonial', ['datatestimony' => $dataTestimony])
         
     </div>
 </div>
+<?php } ?>
 @endsection

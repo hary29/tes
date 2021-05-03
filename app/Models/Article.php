@@ -16,7 +16,7 @@ class Article extends Model
 
     protected $primaryKey = 'id_article';
 
-    protected $fillable = ['publish', 'path_photo', 'title', 'short_description', 'description', 'created_date', 'created_id', 'modified_date', 'modified_id'];
+    protected $fillable = ['publish', 'publish_date', 'path_photo', 'title', 'short_description', 'description', 'created_date', 'created_id', 'modified_date', 'modified_id'];
 
     protected $appends = ['publish_label, photo'];
 
