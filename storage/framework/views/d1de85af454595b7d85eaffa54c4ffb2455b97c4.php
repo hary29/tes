@@ -6,10 +6,18 @@
   <?php $__empty_1 = true; $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
     <div class="row my-2 shadow">
       <div class="col col-lg-3 pb-2">
-      <img src="<?php echo e($row->getPhoto()); ?>" class="w-100" alt="">
+        <a href="<?php echo e(url('article?id='.$row->id_article.'&title='.$row->title)); ?>">
+          <img src="<?php echo e($row->getPhoto()); ?>" class="w-100" alt="">
+        </a>
       </div>
       <div class="col mt-3 pb-2">
-        <h2><?php echo $row->title; ?></h2>
+        <a href="<?php echo e(url('article?id='.$row->id_article.'&title='.$row->title)); ?>">
+          <h2><?php echo $row->title; ?></h2>
+        </a>
+        <p class="text-secondary">
+          Publish at <?php echo e(\Carbon\Carbon::parse($row->publish_date)->format('d F Y')); ?> | by <?php echo e($row->userCreated->name); ?>
+
+        </p>
         <p><?php echo $row->short_description; ?></p>
       </div>
     </div>

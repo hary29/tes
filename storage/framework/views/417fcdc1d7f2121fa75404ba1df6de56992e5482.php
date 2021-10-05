@@ -1,36 +1,20 @@
 <?php $__env->startSection('tittle','About Us'); ?>
 <?php $__env->startSection('container'); ?>
-<script>
-    // Initialize and add the map
-function initMap() {
-// The location of Uluru
-const uluru = { lat: -25.344, lng: 131.036 };
-// The map, centered at Uluru
-const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-});
-// The marker, positioned at Uluru
-const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-});
-}
-</script>
 
 <section class="container-fluid mt-5 mb-3">
-    <div class="p-3 bg-white">
-        About us
-        <h1>My First Google Map</h1>
-
-<div id="map" style="width:100%;height:400px;"></div>
-
-
+    
+    <div class="p-3 bg-white row">
+      <h1>My First Google Map</h1>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?hl=en&amp;q=%20yogyakarta+(testing%20maps)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0"></iframe>  
+        <a href='https://add-map.org/'>embed google maps in website</a>
+        <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=5f7e1a8574e2746cef9643b60342eb22ad13f79c'></script>
+      </div>
     </div>
 </section>
-<section class="container mt-5 mb-3">
+<section class="container">
 	<div class="row">
-		<div class="col col-lg-4 bg-success shadow">
+		<div class="col col-lg-5 shadow">
       <?php if($dataAbout) { ?>
 	      <h1><?php echo $dataAbout['title']; ?></h1>
         <p><?php echo $dataAbout['description']; ?></p>
@@ -124,7 +108,6 @@ const marker = new google.maps.Marker({
         window.attachEvent("onmessage", handleIFrameMessage);
       }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw9_7WWE1crCIjBUA9h1FoV8aM3A8llSU&callback=initMap&libraries=&v=weekly"></script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/php74/tes/resources/views/site/about.blade.php ENDPATH**/ ?>

@@ -43,9 +43,17 @@
             <div class="card-body">
               <img  class="my-1 px-4 w-100" src="<?php echo e($row->getPhoto()); ?>" alt=""> 
               <h5 class="card-title"><?php echo $row->title; ?></h5>
+              <p class="text-secondary">
+                <small>
+                  Publish at <?php echo e(\Carbon\Carbon::parse($row->publish_date)->format('d F Y')); ?> | by <?php echo e($row->userCreated->name); ?>
+
+                </small>
+              </p>
               <p class="card-text"><?php echo $row->short_description; ?></p>
               <div class="text-center">
-                <a href="javascript:void(0)" class="btn btn-primary modalMd" value="" title="Show Data" target="dialog" >Go somewhere</a>
+                <a href="<?php echo e(url('article?id='.$row->id_article.'&title='.$row->title)); ?>" class="btn btn-primary modalMd" value="" title="Show Data" target="dialog" >
+                  Go to article
+                </a>
               </div>
             </div>
           </div>

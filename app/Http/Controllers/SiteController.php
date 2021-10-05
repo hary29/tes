@@ -85,8 +85,20 @@ class SiteController extends Controller
      */
     public function article()
     {
-        //
+        $arId = !empty($_GET['id']) ? $_GET['id'] :null ;
+        $title = !empty($_GET['name']) ? $_GET['name'] :null ;
+        
         $data = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')->paginate(5);
+        if ($arId != null) {
+            $data = ArticleModel::where('publish', 1)->where('id_article', $arId)->firstOrFail();
+            return view('site/detail-article', ['data'=>$data]);
+        }elseif ($title != null) {
+            $data = ArticleModel::where('publish', 1)
+                ->where('title', 'like', '%' .$title. '%')
+                ->orderBy('created_date', 'DESC')
+                ->paginate(5);
+            //return view('site/detail-article', ['data'=>$data]);
+        }
         
         return view('site/article-home', ['data'=>$data]);
         // if detail
