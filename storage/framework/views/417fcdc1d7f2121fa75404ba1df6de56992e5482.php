@@ -58,7 +58,7 @@ const marker = new google.maps.Marker({
 	</div>
 </section>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"></script>
+
 <script type="text/javascript">
       var ifr = document.getElementById("JotFormIFrame-203209074848054");
       if (ifr) {
@@ -124,6 +124,7 @@ const marker = new google.maps.Marker({
         window.attachEvent("onmessage", handleIFrameMessage);
       }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw9_7WWE1crCIjBUA9h1FoV8aM3A8llSU&callback=initMap&libraries=&v=weekly"></script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/php74/tes/resources/views/site/about.blade.php ENDPATH**/ ?>

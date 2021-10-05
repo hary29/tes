@@ -18,7 +18,7 @@ class SiteController extends Controller
     {
         $dataAbout = AboutModel::where('publish', 1)->firstOrFail();
         $dataArticle = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')
-        ->skip(1)->take(3)->get();
+        ->take(4)->get();
         $dataArticleNew = ArticleModel::where('publish', 1)->orderBy('created_date', 'DESC')
         ->take(1)->firstOrFail();
         return view('site/index', 
